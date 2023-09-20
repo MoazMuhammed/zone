@@ -14,7 +14,6 @@
 <string>Example usage description for notifications</string>
 <key>NSPhotoLibraryUsageDescription</key>
 <string>Example usage description for photo library</string>
-
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

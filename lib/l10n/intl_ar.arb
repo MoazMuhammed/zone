@@ -1,0 +1,48 @@
+{
+  "enterLocation" : "أدخل موقعك الحالي",
+  "sendTo" : "ارسل إلى:",
+  "searchProducts" : "البحث عن المنتجات ...",
+  "featuredProducts" : "منتجات مميزة",
+  "viewAll" : "عرض الكل",
+  "weStill" : "نحن لا نزال",
+  "cookingOurApp" : "نقوم بتحضير تطبيقنا",
+  "timeRemaining" : "الوقت المتبقي للإصدار:",
+  "homeScreen" : "الرئيسية",
+  "accountInfo" : "معلومات الحساب",
+  "changePassword" : "تغير كلمة السر",
+  "lang" : "اللغه",
+  "country": "البلد",
+  "aboutApp" : "عن التطبيق",
+  "notification" : "الإشعارات",
+  "themeMode": "سمة",
+  "logOut" : "تسجيل الخروج",
+  "light" : "فاتح",
+  "dark" : "داكن",
+  "settings" : "الإعدادات",
+  "voucher" : "الخصومات",
+  "offers" : "العروض",
+  "favourite" : "المفضلة",
+  "address" : "العنوان",
+  "pastOrder": "اخر الطلبات",
+  "email" : "البريد الالكتروني",
+  "password" : "كلمة السر",
+  "login": "تسجيل الدخول",
+  "register" : "التسجيل كمستخدم جديد",
+  "haveAccount" : "هل تمتلك حساب؟",
+  "phone" : "رقم الهاتف",
+  "confirmPassword": "تأكيد كلمه السر",
+  "userNAme": "اسم المستخدم",
+  "alreadyHave" : "هل تمتلك حساب بالفعل!",
+  "secondTitle" : "كل ما ترغب فيه",
+  "title" : "مرحبًا بك",
+  "next" : "النالي",
+  "gettingLocation" : "جار الحصول علي العنوان ...",
+  "home" : "الرئيسية",
+  "profile": "الحساب",
+  "currentOrder" : "المنتجات الحالية"
+
+
+
+
+
+}

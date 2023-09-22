@@ -11,7 +11,9 @@ import 'package:zone/Core/shared_preferences/my_shared.dart';
 import 'package:zone/Core/shared_preferences/my_shared_keys.dart';
 import 'package:zone/Core/style/color.dart';
 import 'package:zone/Data/Ads%20Cubit/ads_cubit.dart';
+import 'package:zone/Data/Normal%20Ads%20Cubit/normal_ads_cubit.dart';
 import 'package:zone/Models/ads/ads.dart';
+import 'package:zone/Models/normal%20Ads/normal_ads.dart';
 import 'package:zone/Presentation/Home%20Screen/component/categories_widget.dart';
 import 'package:zone/Presentation/Home%20Screen/component/home_product_widget.dart';
 import 'package:zone/Presentation/Home%20Screen/component/home_slider_widget.dart';
@@ -30,25 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Placemark>? placeMark;
   TextEditingController addressEditingController = TextEditingController();
   final cubit = AdsCubit();
-
-  // void _determinePosition() async {
-  //   bool serviceEnable;
-  //   LocationPermission permission;
-  //
-  //   serviceEnable = await Geolocator.isLocationServiceEnabled();
-  //   if (!serviceEnable) {
-  //     return Future.error("Location services are disable");
-  //   }
-  //
-  //   permission = await Geolocator.checkPermission();
-  //
-  //   position = await Geolocator.getCurrentPosition(
-  //       desiredAccuracy: LocationAccuracy.low);
-  //   placeMark =
-  //       await placemarkFromCoordinates(position!.latitude, position!.longitude);
-  //   addressEditingController.text =
-  //       "${placeMark?[0].street.toString()}-${placeMark?[0].country.toString()}";
-  // }
+  final cubitNormalAds = NormalAdsCubit();
 
   Future<void> _checkPermission() async {
     PermissionStatus status = await Permission.location.status;
@@ -86,8 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       position = currentPosition;
       addressEditingController.text =
-      "${placeMark?[0].street.toString()}-${placeMark?[0].country.toString()}";
-      MyShared.putString(key: MySharedKeys.position, value: placeMark?[0].street.toString());
+          "${placeMark?[0].street.toString()}-${placeMark?[0].country.toString()}";
+      MyShared.putString(
+          key: MySharedKeys.position, value: placeMark?[0].street.toString());
     });
 
     print("Location permission granted");
@@ -103,9 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => cubit..getPost(),
-      child: Scaffold(
+    return Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -220,35 +203,52 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              BlocBuilder<AdsCubit, AdsState>(
+              BlocProvider(
+  create: (context) => cubit..getPost(),
+  child: BlocBuilder<AdsCubit, AdsState>(
                 builder: (context, state) {
-                  return GestureDetector(
-                      onTap: () => push(context, const GettingSoon()),
-                      child: CarouselSlider.builder(
-                        itemCount: cubit.ads.length,
-                        itemBuilder: (context, index, realIndex) {
-                          if (index >= 0 && index < cubit.ads.length) {
-                            Ads ads = cubit.ads[index];
-                            return
-                              cubit.state is AdsLoading ? const CircularProgressIndicator(color: AppColors.zoneColor1):
-                              HomeSliderWidget(
-                              image: "${ads.image}",
-                            );
-                          } else {
-                            return const SizedBox();
-                          }
-                        },
-                        options: CarouselOptions(
-                          height: MediaQuery.of(context).size.height * 0.25,
-                          viewportFraction: 0.86,
-                          initialPage: 0,
-                          autoPlay: true,
-                          enableInfiniteScroll: true,
-                          autoPlayInterval: const Duration(seconds: 3),
-                        ),
-                      ));
+                  if (cubit.state is AdsLoading) {
+                    return CircularProgressIndicator(
+                      color: AppColors.zoneColor1,
+                      strokeWidth: 1.w,
+                    );
+                  } else if (cubit.state is AdsSuccess &&
+                      cubit.ads.isEmpty) {
+                    return Container();
+                  } else if (cubit.state is AdsSuccess &&
+                      cubit.ads.isNotEmpty) {
+                    return GestureDetector(
+                        onTap: () => push(context, const GettingSoon()),
+                        child: CarouselSlider.builder(
+                          itemCount: cubit.ads.length,
+                          itemBuilder: (context, index, realIndex) {
+                            if (index >= 0 && index < cubit.ads.length) {
+                              Ads ads = cubit.ads[index];
+                              return cubit.state is AdsLoading
+                                  ? const CircularProgressIndicator(
+                                      color: AppColors.zoneColor1)
+                                  : HomeSliderWidget(
+                                      image: "${ads.image}",
+                                    );
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
+                          options: CarouselOptions(
+                            height: MediaQuery.of(context).size.height * 0.25,
+                            viewportFraction: 0.86,
+                            initialPage: 0,
+                            autoPlay: true,
+                            enableInfiniteScroll: true,
+                            autoPlayInterval: const Duration(seconds: 3),
+                          ),
+                        ));
+                  } else {
+                    return Container();
+                  }
                 },
               ),
+),
               const SizedBox(
                 height: 10,
               ),
@@ -297,20 +297,23 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              BlocBuilder<AdsCubit, AdsState>(
+              BlocProvider(
+    create: (context) => cubitNormalAds..getNormalAds(),
+    child: BlocBuilder<NormalAdsCubit, NormalAdsState>(
                 builder: (context, state) {
                   return GestureDetector(
                       onTap: () => push(context, const GettingSoon()),
                       child: CarouselSlider.builder(
-                        itemCount: cubit.ads.length,
+                        itemCount: cubitNormalAds.normalAds.length,
                         itemBuilder: (context, index, realIndex) {
-                          if (index >= 0 && index < cubit.ads.length) {
-                            Ads ads = cubit.ads[index];
-                            return
-                              cubit.state is AdsLoading ? const CircularProgressIndicator(color: AppColors.zoneColor1):
-                              HomeSliderWidget(
-                              image: "${ads.image}",
-                            );
+                          if (index >= 0 && index < cubitNormalAds.normalAds.length) {
+                            NormalAds normalAds = cubitNormalAds.normalAds[index];
+                            return cubitNormalAds.state is AdsLoading
+                                ? const CircularProgressIndicator(
+                                    color: AppColors.zoneColor1)
+                                : HomeSliderWidget(
+                                    image: "${normalAds.image}",
+                                  );
                           } else {
                             return const SizedBox();
                           }
@@ -326,10 +329,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ));
                 },
               ),
+),
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }

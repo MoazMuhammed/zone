@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zone/Core/Widget/getting_soon_widget.dart';
 import 'package:zone/Core/navigators/navigators.dart';
 import 'package:zone/Core/style/color.dart';
+import 'package:zone/Data/Data%20Profile%20Cubit/data_profile_cubit.dart';
 import 'package:zone/Data/logout/logout_cubit.dart';
 import 'package:zone/Presentation/Profile%20Screen/settings/settings.dart';
 import 'package:zone/generated/l10n.dart';
@@ -16,9 +18,14 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final cubit = LogoutCubit();
+  final cubitDataUser = DataProfileCubit();
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+  create: (context) => cubitDataUser..getUserDetails(),
+  child: BlocBuilder<DataProfileCubit, DataProfileState>(
+  builder: (context, state) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -77,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                       'X Studio',
+                       cubitDataUser.userData.name,
                        style: TextStyle(
                          color:  Theme.of(context).brightness == Brightness.light
                              ? Colors.black
@@ -117,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   context: context,
                                   targetedWidget: const GettingSoon(),
                                   icon: Icons.favorite_outline,
-                                  title: S().favourite, onPressed: () {     push(context, GettingSoon());
+                                  title: S().favourite, onPressed: () {     push(context, const GettingSoon());
                                 },
                                 ),
                                 getProfileElement(
@@ -131,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   targetedWidget: const GettingSoon(),
                                   icon: Icons.card_giftcard,
                                   title: S().voucher, onPressed: () {
-                                  push(context, GettingSoon());
+                                  push(context, const GettingSoon());
 
                                 },
                                 ),
@@ -152,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   targetedWidget: const GettingSoon(),
                                   icon: Icons.location_on,
                                   title: S().address, onPressed: () {
-                                  push(context, GettingSoon());
+                                  push(context, const GettingSoon());
 
                                 },
                                 ),
@@ -161,7 +168,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   targetedWidget: const GettingSoon(),
                                   icon: Icons.checklist_rtl,
                                   title: S().pastOrder, onPressed: () {
-                                  push(context, GettingSoon());
+                                  push(context, const GettingSoon());
 
                                 },
                                 ),
@@ -179,9 +186,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 30, // Adjust as needed
-                    ),
                   ],
                 ),
               ),
@@ -190,6 +194,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
     );
+  },
+),
+);
   }
 }
 

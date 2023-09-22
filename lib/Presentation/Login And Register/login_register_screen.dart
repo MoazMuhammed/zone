@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,11 +46,17 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
         platform = 'iOS';
       }
     } catch (e) {
-      print('Error getting device info: $e');
+      if (kDebugMode) {
+        print('Error getting device info: $e');
+      }
     }
 
-    print('Device Name: $deviceName');
-    print('Platform: $platform');
+    if (kDebugMode) {
+      print('Device Name: $deviceName');
+    }
+    if (kDebugMode) {
+      print('Platform: $platform');
+    }
   }
 
   int chosenPage = 0;
@@ -211,20 +218,21 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
       case 2:
         return BlocProvider(
           create: (context) => cubit,
-          child: BlocBuilder<RegisterCubit, RegisterState>(
-            builder: (context, state) {
-              if (state is RegisterSuccess) {
-                showLoading();
-                pushAndRemoveUntil(context, const MainScreen());
-                hideLoading();
-              }
-              if (state is RegisterLoading) {
-                showLoading();
-              }
-              if (state is RegisterFailure) {
-                showError("Enter a valid email address or password");
-              }
-              return Form(
+          child: BlocConsumer<RegisterCubit, RegisterState>(
+  listener: (context, state) {
+    if (state is   RegisterLoading) {
+      showLoading();
+    }
+    if (state is RegisterSuccess) {
+      hideLoading();
+      pushReplacement(context, const LoginAndRegisterScreen());
+      MyShared.getString(key: MySharedKeys.apiToken);
+    }
+    if (state is LoginFailure) {
+      hideLoading();
+    }  },
+  builder: (context, state) {
+    return Form(
                 key: form2Key,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -274,9 +282,10 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                         })
                   ],
                 ),
-              );
-            },
-          ),
+             
+          );
+  },
+),
         );
       default:
         return BlocProvider(
@@ -293,6 +302,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                           value: cubitLogin.loginUserModel.token.toString())
                       .then((value) {});
                   pushReplacement(context, const MainScreen());
+                  MyShared.getString(key: MySharedKeys.apiToken);
                 }
                 if (state is LoginFailure) {
                   hideLoading();

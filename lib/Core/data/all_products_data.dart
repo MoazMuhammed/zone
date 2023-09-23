@@ -451,6 +451,50 @@ List<Map<String,String>> faqs = [
     'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
   },
 ];
+List<Map<String,String>> terms = [
+  {
+    'title':'Who are we ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'What is our vision and mission ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'How can i communicate with a store ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'What is the refund policy ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'Where do i report a store ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+];
+List<Map<String,String>> privacy = [
+  {
+    'title':'Who are we ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'What is our vision and mission ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'How can i communicate with a store ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'What is the refund policy ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+  {
+    'title':'Where do i report a store ?',
+    'details':'a;ofawfawf akwfnak.faw.fnawfln. a;lwfa.naw;falwf.awf aw;foawfla;wlfaw;mf a;owfawf;anwfkawf;n ;aowjflawf'
+  },
+];
 
 
 List<List<Color>>  gradients = [

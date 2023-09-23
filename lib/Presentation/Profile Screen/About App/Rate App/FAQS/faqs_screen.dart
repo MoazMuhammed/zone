@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:zone/Core/data/all_products_data.dart';
 import 'package:zone/Core/style/color.dart';
+import 'package:zone/generated/l10n.dart';
 
 class FAQs extends StatefulWidget {
   const FAQs({Key? key}) : super(key: key);
@@ -24,17 +25,21 @@ class _FAQsState extends State<FAQs> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: const Text('FAQs',
+        title:  Text(S().faqs,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.black
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white
           ),
         ),
         leading: IconButton(
             onPressed: (){
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.arrow_back,color: Colors.black,)
+            icon:  Icon(Icons.arrow_back,color: Theme.of(context).brightness == Brightness.light
+                ? Colors.black
+                : Colors.white,)
         ),
       ),
       body: Column(
@@ -80,7 +85,9 @@ class _FAQElementState extends State<FAQElement> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Card(
-          color: AppColors.productElement1,
+          color: Theme.of(context).brightness == Brightness.light
+              ? AppColors.productElement1
+              : Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -89,8 +96,10 @@ class _FAQElementState extends State<FAQElement> {
                   padding: const EdgeInsets.only(left: 10.0),
                   child: AutoSizeText('${widget.element['title']}',
                     maxLines: 2,
-                    style: const TextStyle(
-                      color: Colors.black,
+                    style:  TextStyle(
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 16,
                     ),
                   ),
@@ -134,9 +143,11 @@ class _FAQElementState extends State<FAQElement> {
             child: Text(
               '${widget.element['details']}',
               textAlign: TextAlign.left,
-              style: const TextStyle(
+              style:  TextStyle(
                 letterSpacing: 1,
-                color: Colors.black87,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black
+                    : Colors.white,
                 fontSize: 16,
               ),
             ),

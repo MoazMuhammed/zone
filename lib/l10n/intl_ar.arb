@@ -39,10 +39,26 @@
   "gettingLocation" : "جار الحصول علي العنوان ...",
   "home" : "الرئيسية",
   "profile": "الحساب",
-  "currentOrder" : "المنتجات الحالية"
-
-
-
-
-
+  "currentOrder" : "المنتجات الحالية",
+  "delete" : "حذف الحساب",
+  "rateApp" : "قيم التطبيق",
+  "About app" : "عن التطبيق",
+  "faqs" : "الأسئلة الشائعة",
+  "termsOfUse" : "شروط الاستخدام",
+  "privacyPolicy" : "سياسة الخصوصية",
+  "appFeedBack" : "تقيم التطبيق",
+  "howYouRate" : "كيف تقيم تطبيقنا؟",
+  "poor" : "فقير",
+  "excellent" : "ممتاز",
+  "yourFeedback" : "ملاحظاتك مهمة. أخبرنا بأفكارك أو اقتراحاتك أو إذا لاحظت مشكلة أو خطأ",
+  "leaveComment" : "أترك تعليقاَ",
+  "sendFeedBack" : "ارسل رأيك",
+  "pressTheButton" : "اضغط على الزر أدناه وسيتلقى مركز المساعدة طلبًا منك ويتصل بك قريبًا",
+  "needHelp" : "تحتاج مساعدة",
+  "getHelp" : "احصل على مساعدة",
+  "pleaseEnterName" : "من فضلك أدخل إسمك",
+  "pleaseEnterEmail" : "Please enter a valid e-mail!",
+  "pleaseEnterPhone" : "يرجى إدخال البريد الإلكتروني الصحيح!",
+  "pleaseEnterPassword" : "من فضلك أدخل رقمك السري",
+  "pleaseEnterConfirmPassword" : "كلمة السر غير متطابقة"
 }

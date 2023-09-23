@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:zone/Core/data/all_products_data.dart';
 import 'package:zone/Core/style/color.dart';
+import 'package:zone/generated/l10n.dart';
 
 class Terms extends StatefulWidget {
   const Terms({Key? key}) : super(key: key);
@@ -24,17 +25,21 @@ class _TermsState extends State<Terms> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: const Text('Terms of use',
+        title:  Text(S().termsOfUse,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.black
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white
           ),
         ),
         leading: IconButton(
             onPressed: (){
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.arrow_back,color: Colors.black,)
+            icon:  Icon(Icons.arrow_back,color: Theme.of(context).brightness == Brightness.light
+                ? Colors.black
+                : Colors.white,)
         ),
       ),
       body: Column(
@@ -134,9 +139,11 @@ class _TermsElementState extends State<TermsElement> {
             child: Text(
               '${widget.element['details']}',
               textAlign: TextAlign.left,
-              style: const TextStyle(
+              style:  TextStyle(
                 letterSpacing: 1,
-                color: Colors.black87,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black
+                    : Colors.white,
                 fontSize: 16,
               ),
             ),

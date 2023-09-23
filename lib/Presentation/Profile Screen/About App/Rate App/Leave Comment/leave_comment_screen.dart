@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:zone/Core/style/color.dart';
+import 'package:zone/generated/l10n.dart';
 
 class LeaveComment extends StatefulWidget {
   const LeaveComment({Key? key}) : super(key: key);
@@ -21,20 +22,22 @@ class _LeaveCommentState extends State<LeaveComment> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
-          const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Text('Leave Comment',
-              style: TextStyle(
+           Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(S().leaveComment,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text('Your feedback is important. Let us know your thoughts, suggestions or if you have spotted an issue or a bug',
+           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(S().yourFeedback,
               style: TextStyle(
-                color: Colors.black54,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black
+                    : Colors.white,
                 fontSize: 14,
               ),
             ),
@@ -84,9 +87,9 @@ class _LeaveCommentState extends State<LeaveComment> {
                   borderRadius: BorderRadius.circular(15),
                   color: (isChanged)?AppColors.zoneColor1:Colors.grey
               ),
-              child: const Center(
-                child: Text('Send feedback',
-                  style: TextStyle(
+              child: Center(
+                child: Text(S().sendFeedBack,
+                  style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:zone/Core/style/color.dart';
+import 'package:zone/generated/l10n.dart';
 
 class GetHelpScreen extends StatefulWidget {
   const GetHelpScreen({super.key});
@@ -17,20 +18,22 @@ class _GetHelpScreenState extends State<GetHelpScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
-          const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Text('Need help',
-              style: TextStyle(
+           Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(S().needHelp,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Text('Press the button below and help center will get a request from you and contact you soon',
+           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(S().pressTheButton,
               style: TextStyle(
-                color: Colors.black54,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black
+                    : Colors.white,
                 fontSize: 14,
               ),
             ),
@@ -58,9 +61,9 @@ class _GetHelpScreenState extends State<GetHelpScreen> {
                       width: 2
                   )
               ),
-              child:  const Center(
-                child: Text('Get Help',
-                  style: TextStyle(
+              child:   Center(
+                child: Text(S().getHelp,
+                  style: const TextStyle(
                       color: AppColors.zoneColor1,
                       fontWeight: FontWeight.bold
                   ),

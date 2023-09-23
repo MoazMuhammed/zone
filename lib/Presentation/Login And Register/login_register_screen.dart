@@ -177,7 +177,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                 labelText: S().userNAme,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter your name';
+                    return S().pleaseEnterName;
                   }
                   return null;
                 },
@@ -189,7 +189,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                   controller: emailController,
                   validator: (value) {
                     if (!value!.contains('@') || !value.contains('.com')) {
-                      return 'Please enter a valid e-mail!';
+                      return S().pleaseEnterEmail;
                     }
                     return null;
                   }),
@@ -199,7 +199,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                   controller: phoneController1,
                   validator: (value) {
                     if (!value!.startsWith('01')) {
-                      return 'Please enter a valid phone number!';
+                      return S().pleaseEnterPhone;
                     }
                     return null;
                   }),
@@ -230,6 +230,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
     }
     if (state is LoginFailure) {
       hideLoading();
+      showError("Email or Password is wrong");
     }  },
   builder: (context, state) {
     return Form(
@@ -243,7 +244,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                         controller: passwordController1,
                         validator: (value) {
                           if (value == null) {
-                            return 'This field can not be empty';
+                            return S().pleaseEnterPassword;
                           }
                           return null;
                         }),
@@ -253,7 +254,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                         controller: passwordControllerConfirm,
                         validator: (value) {
                           if (value != passwordController1.text) {
-                            return 'Password does not match';
+                            return S().pleaseEnterConfirmPassword;
                           }
                           return null;
                         }),
@@ -321,7 +322,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                           controller: emailController2,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter your email';
+                              return S().pleaseEnterEmail;
                             } else if (!value.contains('@') ||
                                 !value.contains('.com')) {
                               return 'Please enter a valid email';
@@ -334,7 +335,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                           controller: passwordController2,
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Please enter your password';
+                              return S().pleaseEnterPassword;
                             }
                             return null;
                           }),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zone/generated/l10n.dart';
 
 class RateBar extends StatefulWidget {
   const RateBar({Key? key}) : super(key: key);
@@ -43,8 +44,12 @@ class _RateBarState extends State<RateBar> {
                   ),
                 ),
               ),
-              (i == 0)? const Text('poor',style: TextStyle(color: Colors.black54,fontSize: 12),) :
-              (i == 4)?const Text('Excellent',style: TextStyle(color: Colors.black54,fontSize: 12),):
+              (i == 0)?  Text(S().poor,style: TextStyle(color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white,fontSize: 12),) :
+              (i == 4)? Text(S().excellent,style: TextStyle(color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white,fontSize: 12),):
               const Text(''),
             ],
           )

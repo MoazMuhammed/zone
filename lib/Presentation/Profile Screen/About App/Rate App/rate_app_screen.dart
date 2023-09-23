@@ -5,6 +5,7 @@ import 'package:zone/Core/style/color.dart';
 import 'package:zone/Presentation/Profile%20Screen/About%20App/Rate%20App/Get%20Help/get_help_screen.dart';
 import 'package:zone/Presentation/Profile%20Screen/About%20App/Rate%20App/Leave%20Comment/leave_comment_screen.dart';
 import 'package:zone/Presentation/Profile%20Screen/About%20App/Rate%20App/Rate%20Bar/rate_bar.dart';
+import 'package:zone/generated/l10n.dart';
 
 class RateAppScreen extends StatefulWidget {
   const RateAppScreen({super.key});
@@ -26,17 +27,21 @@ class _RateAppScreenState extends State<RateAppScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: const Text('App feedback',
+        title:  Text(S().appFeedBack,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.black
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black
+                  : Colors.white
           ),
         ),
         leading: IconButton(
             onPressed: (){
               Navigator.of(context).pop();
             },
-            icon: const Icon(Icons.arrow_back,color: Colors.black,)
+            icon:  Icon(Icons.arrow_back,color: Theme.of(context).brightness == Brightness.light
+                ? Colors.black
+                : Colors.white,)
         ),
       ),
       body: SingleChildScrollView(
@@ -48,11 +53,11 @@ class _RateAppScreenState extends State<RateAppScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height*0.14,
               ),
-              const AutoSizeText(
-                'How would you rate your zone ?',
+               AutoSizeText(
+                S().howYouRate,
                 textAlign: TextAlign.center,
                 maxLines: 2,
-                style: TextStyle(
+                style: const TextStyle(
                     color: AppColors.zoneColor1,
                     fontWeight: FontWeight.bold,
                     fontSize: 18

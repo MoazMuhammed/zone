@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:zone/Core/navigators/navigators.dart';
-import 'package:zone/Core/utilies/app_svp.dart';
 import 'package:zone/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -51,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       height: 40.sp,
                       width: 40.sp,
                       duration: const Duration(milliseconds: 200),
-                      curve: Curves.bounceOut,
+                      curve: Curves.easeIn,
                       child: Image.asset('assets/images/logozone.png'),
                     ),
                     SizedBox(height: 1.h,),

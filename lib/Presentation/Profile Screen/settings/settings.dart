@@ -41,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            'Settings',
+            S().settings,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Theme.of(context).brightness == Brightness.light
@@ -321,7 +321,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ));
                 },
               ),
+            ),  const Padding(
+              padding:
+              EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              child: Divider(
+                height: 2,
+                color: AppColors.productElement2,
+              ),
             ),
+            getProfileElement(
+                context: context,
+                title: S().delete,
+                trailing: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: IconButton(
+                      onPressed: () {
+                        pushReplacement(context, const MainScreen());
+                      },
+                      icon: const Icon(Icons.delete_forever,
+                          color: AppColors.red)),
+                )),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -330,6 +349,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     : const Color(0x0ff2e2e2),
               ),
             ),
+
           ],
         ));
   }

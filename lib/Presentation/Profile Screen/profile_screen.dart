@@ -42,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 0.5,
             child: Image.asset(
-              'assets/images/logozone.png',
+              'assets/images/profile.png',
               fit: BoxFit.fill,
             ),
           ),

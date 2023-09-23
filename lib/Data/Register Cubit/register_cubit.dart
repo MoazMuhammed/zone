@@ -5,7 +5,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:zone/Core/Api/endPoints.dart';
 import 'package:zone/Core/Api/my_dio.dart';
 import 'package:zone/Models/register_model/register_model.dart';
-
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
@@ -26,9 +25,10 @@ class RegisterCubit extends Cubit<RegisterState> {
       "password": password,
       "device_token": device_token,
     });
+    print(response!.statusCode);
     try{
-      signUpModel = RegisterModel.fromJson(response!.data);
-      if( response.statusCode == 201) {
+      signUpModel = RegisterModel.fromJson(response.data);
+      if( response.statusCode == 201 ) {
         emit(RegisterSuccess(signUpModel.message.toString()));
         print(signUpModel.message);
         Fluttertoast.showToast(
@@ -37,15 +37,16 @@ class RegisterCubit extends Cubit<RegisterState> {
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,
             backgroundColor: Colors.white,
+
             textColor: Colors.black,
             fontSize: 14.sp
         );
       }
-      if(response.statusCode != 201) {
-        emit(RegisterFailure(signUpModel.message.toString()));
+      if(response.statusMessage!.isEmpty) {
+        emit(RegisterFailure('Data Already exist'));
         print(response.data.toString());
         Fluttertoast.showToast(
-            msg: response.data.toString(),
+            msg: "Data Already exist",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,
@@ -55,10 +56,10 @@ class RegisterCubit extends Cubit<RegisterState> {
         );
       }
     }catch(e){
-      emit(RegisterFailure(signUpModel.message.toString()));
+      emit(RegisterFailure('Data Already '));
       print(e);
       Fluttertoast.showToast(
-          msg: response!.data.toString(),
+          msg: 'Data Already ',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,

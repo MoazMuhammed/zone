@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "address": MessageLookupByLibrary.simpleMessage("العنوان"),
         "alreadyHave":
             MessageLookupByLibrary.simpleMessage("هل تمتلك حساب بالفعل!"),
+        "appFeedBack": MessageLookupByLibrary.simpleMessage("تقيم التطبيق"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغير كلمة السر"),
         "confirmPassword":
@@ -37,35 +38,59 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentOrder":
             MessageLookupByLibrary.simpleMessage("المنتجات الحالية"),
         "dark": MessageLookupByLibrary.simpleMessage("داكن"),
+        "delete": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "enterLocation":
             MessageLookupByLibrary.simpleMessage("أدخل موقعك الحالي"),
+        "excellent": MessageLookupByLibrary.simpleMessage("ممتاز"),
+        "faqs": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
         "favourite": MessageLookupByLibrary.simpleMessage("المفضلة"),
         "featuredProducts":
             MessageLookupByLibrary.simpleMessage("منتجات مميزة"),
+        "getHelp": MessageLookupByLibrary.simpleMessage("احصل على مساعدة"),
         "gettingLocation":
             MessageLookupByLibrary.simpleMessage("جار الحصول علي العنوان ..."),
         "haveAccount": MessageLookupByLibrary.simpleMessage("هل تمتلك حساب؟"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "homeScreen": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "howYouRate": MessageLookupByLibrary.simpleMessage("كيف تقيم تطبيقنا؟"),
         "lang": MessageLookupByLibrary.simpleMessage("اللغه"),
+        "leaveComment": MessageLookupByLibrary.simpleMessage("أترك تعليقاَ"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "needHelp": MessageLookupByLibrary.simpleMessage("تحتاج مساعدة"),
         "next": MessageLookupByLibrary.simpleMessage("النالي"),
         "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "offers": MessageLookupByLibrary.simpleMessage("العروض"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
         "pastOrder": MessageLookupByLibrary.simpleMessage("اخر الطلبات"),
         "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "pleaseEnterConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة السر غير متطابقة"),
+        "pleaseEnterEmail": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid e-mail!"),
+        "pleaseEnterName":
+            MessageLookupByLibrary.simpleMessage("من فضلك أدخل إسمك"),
+        "pleaseEnterPassword":
+            MessageLookupByLibrary.simpleMessage("من فضلك أدخل رقمك السري"),
+        "pleaseEnterPhone": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال البريد الإلكتروني الصحيح!"),
+        "poor": MessageLookupByLibrary.simpleMessage("فقير"),
+        "pressTheButton": MessageLookupByLibrary.simpleMessage(
+            "اضغط على الزر أدناه وسيتلقى مركز المساعدة طلبًا منك ويتصل بك قريبًا"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "rateApp": MessageLookupByLibrary.simpleMessage("قيم التطبيق"),
         "register":
             MessageLookupByLibrary.simpleMessage("التسجيل كمستخدم جديد"),
         "searchProducts":
             MessageLookupByLibrary.simpleMessage("البحث عن المنتجات ..."),
         "secondTitle": MessageLookupByLibrary.simpleMessage("كل ما ترغب فيه"),
+        "sendFeedBack": MessageLookupByLibrary.simpleMessage("ارسل رأيك"),
         "sendTo": MessageLookupByLibrary.simpleMessage("ارسل إلى:"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "termsOfUse": MessageLookupByLibrary.simpleMessage("شروط الاستخدام"),
         "themeMode": MessageLookupByLibrary.simpleMessage("سمة"),
         "timeRemaining":
             MessageLookupByLibrary.simpleMessage("الوقت المتبقي للإصدار:"),
@@ -73,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNAme": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
         "voucher": MessageLookupByLibrary.simpleMessage("الخصومات"),
-        "weStill": MessageLookupByLibrary.simpleMessage("نحن لا نزال")
+        "weStill": MessageLookupByLibrary.simpleMessage("نحن لا نزال"),
+        "yourFeedback": MessageLookupByLibrary.simpleMessage(
+            "ملاحظاتك مهمة. أخبرنا بأفكارك أو اقتراحاتك أو إذا لاحظت مشكلة أو خطأ")
       };
 }

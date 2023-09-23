@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:responsive_navigation_bar/responsive_navigation_bar.dart';
 import 'package:zone/Core/Widget/getting_soon_widget.dart';
 import 'package:zone/Core/shared_preferences/my_shared.dart';
@@ -44,20 +43,20 @@ class _MainScreenState extends State<MainScreen> {
               bottomNavigationBar: ResponsiveNavigationBar(
                 navigationBarButtons:  [
                    NavigationBarButton(
-                    padding: EdgeInsets.symmetric(horizontal: 35, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 12),
                     text: S().home,
                     icon: Icons.home,
                     backgroundColor: AppColors.zoneColor1,
                   ),
                    NavigationBarButton(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                       text: S().currentOrder,
                       icon: Icons.list_alt,
                       backgroundColor: AppColors.zoneColor1),
                    NavigationBarButton(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
                       text: S().notification,
                       icon: Icons.notifications,
                       backgroundColor: AppColors.zoneColor1),

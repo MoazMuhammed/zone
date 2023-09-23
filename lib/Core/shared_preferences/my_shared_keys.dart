@@ -22,7 +22,8 @@ enum MySharedKeys {
   userImage,
   userDoctorStatus,
   userPatientStatus,
-  position
+  position,
+  botAds
 
 
 }

@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
@@ -63,7 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
         currentPosition.longitude,
       );
     } catch (e) {
-      print("Error getting location: $e");
+      if (kDebugMode) {
+        print("Error getting location: $e");
+      }
       return;
     }
 
@@ -75,7 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
           key: MySharedKeys.position, value: placeMark?[0].street.toString());
     });
 
-    print("Location permission granted");
+    if (kDebugMode) {
+      print("Location permission granted");
+    }
   }
 
   @override
@@ -230,6 +235,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   : HomeSliderWidget(
                                       image: "${ads.image}",
                                     );
+                              
                             } else {
                               return const SizedBox();
                             }

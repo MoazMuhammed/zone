@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentOrder": MessageLookupByLibrary.simpleMessage("Current Order"),
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete Account"),
+        "deleteAcc": MessageLookupByLibrary.simpleMessage(
+            "Account Has been Deleted Successfully"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterLocation":
             MessageLookupByLibrary.simpleMessage("Enter Your Location"),

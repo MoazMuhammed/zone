@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("المنتجات الحالية"),
         "dark": MessageLookupByLibrary.simpleMessage("داكن"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+        "deleteAcc":
+            MessageLookupByLibrary.simpleMessage("تم حذف التطبيق بنجاح"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "enterLocation":
             MessageLookupByLibrary.simpleMessage("أدخل موقعك الحالي"),

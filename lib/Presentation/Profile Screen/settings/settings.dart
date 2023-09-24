@@ -11,6 +11,8 @@ import 'package:zone/Core/shared_preferences/my_shared.dart';
 import 'package:zone/Core/shared_preferences/my_shared_keys.dart';
 import 'package:zone/Core/style/color.dart';
 import 'package:zone/Core/style/themes.dart';
+import 'package:zone/Core/utilies/easy_loading.dart';
+import 'package:zone/Data/Delete%20Account%20Cubit/delete_acc_cubit.dart';
 import 'package:zone/Data/logout/logout_cubit.dart';
 import 'package:zone/Presentation/Profile%20Screen/About%20App/about_app_screen.dart';
 import 'package:zone/Presentation/Profile%20Screen/Acount%20Info/account_info_screen.dart';
@@ -27,6 +29,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool notificationsAllowed = true;
   final cubit = LogoutCubit();
+  final cubitDeleteAccount = DeleteAccCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +81,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: AppColors.zoneColor1)),
                 )),
             const Padding(
-              padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: Divider(
                 height: 2,
                 color: AppColors.productElement2,
@@ -98,8 +100,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: AppColors.zoneColor1)),
                 )),
             const Padding(
-              padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: Divider(
                 height: 2,
                 color: AppColors.productElement2,
@@ -181,8 +182,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: AppColors.zoneColor1)),
                 )),
             const Padding(
-              padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: Divider(
                 height: 2,
                 color: AppColors.productElement2,
@@ -201,8 +201,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: AppColors.zoneColor1)),
                 )),
             const Padding(
-              padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: Divider(
                 height: 2,
                 color: AppColors.productElement2,
@@ -227,26 +226,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ? AppColors.productElement1
                   : const Color(0x0ff2e2e2),
             ),
-            getProfileElement(
-              context: context,
-              title: S().notification,
-              trailing: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Switch(
-                    onChanged: (bool value) {
-                      setState(() {
-                      });
-                    },
-                    value: notificationsAllowed,
-                    activeColor: AppColors.zoneColor1,
-                  )),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Divider(
-                height: 2,
-                color: AppColors.productElement2,
-              ),
+            // getProfileElement(
+            //   context: context,
+            //   title: S().notification,
+            //   trailing: Padding(
+            //       padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            //       child: Switch(
+            //         onChanged: (bool value) {
+            //           setState(() {
+            //           });
+            //         },
+            //         value: notificationsAllowed,
+            //         activeColor: AppColors.zoneColor1,
+            //       )),
+            // ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(),
             ),
             getProfileElement(
                 context: context,
@@ -293,8 +289,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   }),
                 )),
             const Padding(
-              padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: Divider(
                 height: 2,
                 color: AppColors.productElement2,
@@ -321,26 +316,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ));
                 },
               ),
-            ),  const Padding(
-              padding:
-              EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
               child: Divider(
                 height: 2,
                 color: AppColors.productElement2,
               ),
             ),
-            getProfileElement(
-                context: context,
-                title: S().delete,
-                trailing: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: IconButton(
-                      onPressed: () {
-                        pushReplacement(context, const MainScreen());
-                      },
-                      icon: const Icon(Icons.delete_forever,
-                          color: AppColors.red)),
-                )),
+            BlocProvider(
+              create: (context) => cubitDeleteAccount..deleteAccount,
+              child: BlocBuilder<DeleteAccCubit, DeleteAccState>(
+                builder: (context, state) {
+                  return getProfileElement(
+                      context: context,
+                      title: S().delete,
+                      trailing: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: IconButton(
+                            onPressed: () {
+                              cubitDeleteAccount.deleteAcc();
+                              MyShared.putString(
+                                  key: MySharedKeys.apiToken, value: '');
+                              pushReplacement(context, const MainScreen());
+                            },
+                            icon: const Icon(Icons.delete_forever,
+                                color: AppColors.red)),
+                      ));
+                },
+              ),
+            ),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -349,7 +354,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     : const Color(0x0ff2e2e2),
               ),
             ),
-
           ],
         ));
   }

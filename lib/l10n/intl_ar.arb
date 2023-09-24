@@ -60,5 +60,7 @@
   "pleaseEnterEmail" : "Please enter a valid e-mail!",
   "pleaseEnterPhone" : "يرجى إدخال البريد الإلكتروني الصحيح!",
   "pleaseEnterPassword" : "من فضلك أدخل رقمك السري",
-  "pleaseEnterConfirmPassword" : "كلمة السر غير متطابقة"
+  "pleaseEnterConfirmPassword" : "كلمة السر غير متطابقة",
+  "deleteAcc" : "تم حذف التطبيق بنجاح"
+
 }

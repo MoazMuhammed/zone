@@ -661,6 +661,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Account Has been Deleted Successfully`
+  String get deleteAcc {
+    return Intl.message(
+      'Account Has been Deleted Successfully',
+      name: 'deleteAcc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

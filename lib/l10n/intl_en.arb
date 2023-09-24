@@ -61,7 +61,8 @@
   "pleaseEnterEmail" : "Please enter a valid e-mail!",
   "pleaseEnterPhone" : "Please enter a valid phone number!",
   "pleaseEnterPassword" : "Please enter your Password",
-  "pleaseEnterConfirmPassword" : "Password does not match"
+  "pleaseEnterConfirmPassword" : "Password does not match",
+  "deleteAcc" : "Account Has been Deleted Successfully"
 
 
 
